@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-18",
+  "plugin_id": "org.wordflowlab.art-direction",
+  "package_sha256": "54f05a084e642455f90defc9a2fc8da9c71b9d4204e8f51b176843d5f3673682",
+  "host_version": "hetu 0.12.4",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "tabs": [
+    "参考板",
+    "色板与对比",
+    "造型方案",
+    "区域意见",
+    "接续创作"
+  ],
+  "empty_state": true,
+  "professional_actions": true,
+  "artifact_files": [
+    "美术参考板.html"
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "widths": [
+    1360,
+    760
+  ],
+  "reduced_transparency": true,
+  "CAS_preserves_input": true,
+  "explicit_rebase": true,
+  "close_reopen": true,
+  "dirty_buffer_restore": true,
+  "page_errors": [],
+  "limits": [
+    "原生窗口材质、系统输入法及Windows/Linux未由本测试证明"
+  ]
+}

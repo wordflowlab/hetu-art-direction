@@ -1,0 +1,52 @@
+{
+  "recorded_at": "2026-11-18T15:49:55.350Z",
+  "plugin_id": "org.wordflowlab.art-direction",
+  "package_sha256": "54f05a084e642455f90defc9a2fc8da9c71b9d4204e8f51b176843d5f3673682",
+  "host_version": "hetu 0.12.4",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "actions": [
+    "skills.read",
+    "save_project",
+    "check_designs",
+    "palette_contrast",
+    "render_board",
+    "export_board",
+    "compare_designs",
+    "locate_reference",
+    "put_reference",
+    "put_board",
+    "put_palette",
+    "put_design",
+    "put_note",
+    "list_projects",
+    "get_source",
+    "get_operation",
+    "get_basis",
+    "build_context",
+    "create_handoff",
+    "compare_versions",
+    "export_project",
+    "remove_note",
+    "remove_design",
+    "remove_palette",
+    "remove_board",
+    "remove_reference",
+    "get_project"
+  ],
+  "skill_resources": 3,
+  "lifecycle": [
+    "install",
+    "disable",
+    "enable",
+    "uninstall",
+    "install"
+  ],
+  "fixed_history": true,
+  "CAS": true,
+  "original_key_recovery": true,
+  "artifact_sha256_verified": true,
+  "limits": [
+    "没有付费模型、作者采纳、定稿或Windows/Linux专业运行验收"
+  ]
+}
