@@ -327,6 +327,18 @@
                       "proposed",
                       "selected"
                     ]
+                  },
+                  "entity_source_index": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 99
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
                   }
                 },
                 "required": [
@@ -337,7 +349,8 @@
                   "reference_ids",
                   "palette_id",
                   "requirements",
-                  "status"
+                  "status",
+                  "entity_source_index"
                 ]
               },
               "maxItems": 1000
@@ -840,6 +853,18 @@
                           "proposed",
                           "selected"
                         ]
+                      },
+                      "entity_source_index": {
+                        "anyOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 99
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
                       }
                     },
                     "required": [
@@ -850,7 +875,8 @@
                       "reference_ids",
                       "palette_id",
                       "requirements",
-                      "status"
+                      "status",
+                      "entity_source_index"
                     ]
                   },
                   "maxItems": 1000
@@ -1510,6 +1536,18 @@
                     "proposed",
                     "selected"
                   ]
+                },
+                "entity_source_index": {
+                  "anyOf": [
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 99
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
                 }
               },
               "required": [
@@ -1520,7 +1558,8 @@
                 "reference_ids",
                 "palette_id",
                 "requirements",
-                "status"
+                "status",
+                "entity_source_index"
               ]
             }
           },
