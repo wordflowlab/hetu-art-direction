@@ -1,4 +1,4 @@
-import {requireValue as need} from '../../vendor/project-store.ts';
+import {data,requireValue as need} from '../../vendor/project-store.ts';
 import {artifact,hash} from './artifact.ts';
 import {escapeHTML as esc,htmlPage} from './presentation.ts';
 import {readBlob} from './media.ts';
@@ -20,10 +20,13 @@ export function validateDomain(p:any){
  for(const ref of p.references)if(ref.crop)box(ref.crop);
  for(const board of p.boards){unique(board.reference_ids,'参考板图像');for(const id of board.reference_ids)find(p.references,id,'参考图');}
  for(const palette of p.palettes)unique(palette.swatches.map((s:any)=>s.id),'色板色块');
- for(const d of p.designs){unique(d.reference_ids,'方案参考图');for(const id of d.reference_ids)find(p.references,id,'方案参考图');if(d.palette_id!==null)find(p.palettes,d.palette_id,'方案色板');}
+ for(const d of p.designs){need((d.entity_ref===null)===(d.entity_source_index===null),'实体引用须同时给出固定设定来源。');unique(d.reference_ids,'方案参考图');for(const id of d.reference_ids)find(p.references,id,'方案参考图');if(d.palette_id!==null)find(p.palettes,d.palette_id,'方案色板');}
  for(const n of p.notes){find(p.references,n.reference_id,'意见图像');box(n.region);need(n.status!=='resolved'||n.resolution.trim(),'解决意见须说明处理结果。');}
 }
-export async function checkSources(p:any,sources:any[],_request:any){for(const r of p.references)need(sources[r.asset_source_index]?.source_ref?.kind==='asset','参考图须关联当前作品的固定素材。');}
+export async function checkSources(p:any,sources:any[],request:any){
+ for(const r of p.references)need(sources[r.asset_source_index]?.source_ref?.kind==='asset','参考图须关联当前作品的固定素材。');
+ for(const d of p.designs)if(d.entity_ref!==null){const source=sources[d.entity_source_index]?.source_ref;need(source?.kind==='blueprint','设计实体须来自固定作品设定。');const result:any=data(await request('hetu.extensions.sources.inspect',{source_ref:source,entity_ref:d.entity_ref}));const expected=d.kind==='costume'||d.kind==='character'?'character':d.kind==='location'?'location':'world_entry';need(result.entity_kind===expected,'设计类型与固定设定实体不对应。');}
+}
 export async function loadImages(p:any,sources:any[],request:any,ids?:string[]){
  const references=p.references.filter((r:any)=>!ids||ids.includes(r.id)),cache=new Map<number,any>(),images:any[]=[];let total=0;
  for(const ref of references){let value=cache.get(ref.asset_source_index);if(!value){const source=sources[ref.asset_source_index]?.source_ref;const bytes=await readBlob(source,request,2*1024*1024);total+=bytes.length;need(total<=8*1024*1024,'参考板实际图像超过8MiB，请拆分参考板。','hetu.budget_exceeded');value={...imageHeader(bytes),file_sha256:hash(bytes),data:'data:image/'+imageHeader(bytes).type+';base64,'+bytes.toString('base64')};cache.set(ref.asset_source_index,value);}images.push({reference:ref,...value});}return images;

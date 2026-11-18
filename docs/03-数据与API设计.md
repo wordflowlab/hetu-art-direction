@@ -145,3 +145,5 @@ sequenceDiagram
 ```
 
 导出按固定对象分块，核对offset、总长度、分块与完整SHA-256。UTF-8分块不能切断字符，二进制不经字符串转码。
+
+设计的entity_ref与entity_source_index必须同时为空或同时给出；来源须为当前作品固定blueprint，通过公开sources.inspect核验具体实体及类型。不能以同名人物推定身份，专业方案不改正式实体。

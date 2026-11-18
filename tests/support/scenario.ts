@@ -50,6 +50,7 @@ export function scenario(_work:any=sourceRef.work_ref):any {const p={...newProje
       "title": "林溪 雨披方案",
       "kind": "costume",
       "entity_ref": null,
+      "entity_source_index": null,
       "reference_ids": [],
       "palette_id": "rain",
       "requirements": [
@@ -63,6 +64,7 @@ export function scenario(_work:any=sourceRef.work_ref):any {const p={...newProje
       "title": "林溪 短外套方案",
       "kind": "costume",
       "entity_ref": null,
+      "entity_source_index": null,
       "reference_ids": [],
       "palette_id": "rain",
       "requirements": [
